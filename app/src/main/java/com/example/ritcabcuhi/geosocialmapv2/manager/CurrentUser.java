@@ -1,11 +1,10 @@
-package com.example.ritcabcuhi.geosocialmapv2.Manager;
+package com.example.ritcabcuhi.geosocialmapv2.manager;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.ritcabcuhi.geosocialmapv2.EventBus.MainEvent;
-import com.example.ritcabcuhi.geosocialmapv2.Model.User;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.ritcabcuhi.geosocialmapv2.eventbus.MainEvent;
+import com.example.ritcabcuhi.geosocialmapv2.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

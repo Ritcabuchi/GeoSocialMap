@@ -1,4 +1,4 @@
-package com.example.ritcabcuhi.geosocialmapv2.UI;
+package com.example.ritcabcuhi.geosocialmapv2.ui;
 
 import android.content.Intent;
 import android.os.Build;
@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.ritcabcuhi.geosocialmapv2.EventBus.MainEvent;
-import com.example.ritcabcuhi.geosocialmapv2.Manager.CurrentUser;
+import com.example.ritcabcuhi.geosocialmapv2.eventbus.MainEvent;
+import com.example.ritcabcuhi.geosocialmapv2.manager.CurrentUser;
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.firebase.auth.FirebaseAuth;
 

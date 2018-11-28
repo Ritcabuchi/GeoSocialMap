@@ -1,4 +1,4 @@
-package com.example.ritcabcuhi.geosocialmapv2.UI;
+package com.example.ritcabcuhi.geosocialmapv2.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,11 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.ritcabcuhi.geosocialmapv2.EventBus.MainEvent;
-import com.example.ritcabcuhi.geosocialmapv2.EventBus.StartMainActivityEvent;
-import com.example.ritcabcuhi.geosocialmapv2.Manager.CurrentUser;
+import com.example.ritcabcuhi.geosocialmapv2.eventbus.StartMainActivityEvent;
 import com.example.ritcabcuhi.geosocialmapv2.R;
-import com.google.firebase.auth.FirebaseAuth;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

@@ -1,4 +1,4 @@
-package com.example.ritcabcuhi.geosocialmapv2.UI;
+package com.example.ritcabcuhi.geosocialmapv2.ui;
 
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.ritcabcuhi.geosocialmapv2.Model.User;
+import com.example.ritcabcuhi.geosocialmapv2.model.User;
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

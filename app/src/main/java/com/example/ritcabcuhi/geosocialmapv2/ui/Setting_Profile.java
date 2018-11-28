@@ -1,4 +1,4 @@
-package com.example.ritcabcuhi.geosocialmapv2.UI;
+package com.example.ritcabcuhi.geosocialmapv2.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

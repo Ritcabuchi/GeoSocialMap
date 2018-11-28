@@ -1,9 +1,7 @@
-package com.example.ritcabcuhi.geosocialmapv2.UI;
+package com.example.ritcabcuhi.geosocialmapv2.ui;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -19,13 +17,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
-import com.example.ritcabcuhi.geosocialmapv2.EventBus.StartMainActivityEvent;
-import com.example.ritcabcuhi.geosocialmapv2.Manager.CurrentUser;
-import com.example.ritcabcuhi.geosocialmapv2.Model.User;
+import com.example.ritcabcuhi.geosocialmapv2.eventbus.StartMainActivityEvent;
+import com.example.ritcabcuhi.geosocialmapv2.manager.CurrentUser;
+import com.example.ritcabcuhi.geosocialmapv2.model.User;
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.firebase.auth.FirebaseAuth;
 
