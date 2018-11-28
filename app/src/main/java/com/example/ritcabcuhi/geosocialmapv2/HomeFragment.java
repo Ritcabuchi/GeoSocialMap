@@ -1,9 +1,12 @@
 package com.example.ritcabcuhi.geosocialmapv2;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +15,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,7 +25,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class HomeFragment extends Fragment implements OnMapReadyCallback {
+public class HomeFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
     private GoogleMap mMap;
 
@@ -52,6 +57,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         LatLng sydney = new LatLng( 6.414422, 101.823475);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Narathiwat"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 17F));
+        mMap.setOnMapLongClickListener(this);
     }
 
     @Override
@@ -80,4 +86,30 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    @Override
+    public void onMapLongClick(LatLng latLng) {
+        mMap.addMarker(new MarkerOptions().position(latLng));
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("ยืนยันเพิ่มตำแหน่ง?");
+        builder.setCancelable(false);
+        builder.setIcon(R.drawable.doctor);
+
+        builder.setPositiveButton("ยืนยัน", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setNegativeButton("ไม่", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+            }
+        });
+        builder.show();
+    }
 }
