@@ -1,4 +1,4 @@
-package com.example.ritcabcuhi.geosocialmapv2;
+package com.example.ritcabcuhi.geosocialmapv2.UI;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -20,7 +21,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class HomeFragment extends Fragment implements OnMapReadyCallback {
+public class HomeFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
 
     private GoogleMap mMap;
 
@@ -52,6 +53,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         LatLng sydney = new LatLng( 6.414422, 101.823475);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Narathiwat"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 17F));
+
+        mMap.setOnMapLongClickListener(this);
     }
 
     @Override
@@ -80,4 +83,9 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+
+    @Override
+    public void onMapLongClick(LatLng latLng) {
+        mMap.addMarker(new MarkerOptions().position(latLng));
+    }
 }

@@ -18,18 +18,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".UI.WelcomeScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignIn" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".LayoutAuten" />
+        <activity android:name=".UI.SignInActivity" />
+        <activity android:name=".UI.SignUpActivity" />
+        <activity android:name=".UI.MenuActivity" />
         <activity
-            android:name=".mainHome"
+            android:name=".UI.mainHome"
             android:label="@string/title_activity_main_home" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -43,8 +43,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".fragment" />
-        <activity android:name=".Setting_Profile"></activity>
+        <activity android:name=".UI.MainActivity" />
+        <activity android:name=".UI.Setting_Profile"></activity>
     </application>
 
 </manifest>

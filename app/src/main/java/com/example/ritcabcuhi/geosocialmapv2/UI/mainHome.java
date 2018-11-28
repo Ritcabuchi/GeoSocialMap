@@ -1,4 +1,4 @@
-package com.example.ritcabcuhi.geosocialmapv2;
+package com.example.ritcabcuhi.geosocialmapv2.UI;
 
 import android.content.pm.PackageManager;
 import android.support.v4.app.FragmentActivity;
@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -61,6 +62,9 @@ public class mainHome extends AppCompatActivity implements OnMapReadyCallback {
 
 
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

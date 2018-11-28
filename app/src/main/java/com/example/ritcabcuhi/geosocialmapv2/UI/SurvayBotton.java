@@ -1,4 +1,4 @@
-package com.example.ritcabcuhi.geosocialmapv2;
+package com.example.ritcabcuhi.geosocialmapv2.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.support.v7.widget.Toolbar;
+
+import com.example.ritcabcuhi.geosocialmapv2.R;
 
 public class  SurvayBotton extends AppCompatActivity {
     private Toolbar btToolbar;

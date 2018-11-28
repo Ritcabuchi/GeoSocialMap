@@ -12,7 +12,7 @@
         >
 
         <RelativeLayout
-            android:id="@+id/ImgUser"
+            android:id="@+id/userProfileContainer"
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             android:id="@+id/NameProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ImgUser"
+            android:layout_below="@+id/userProfileContainer"
             android:layout_centerHorizontal="true"
             android:text=""
             android:textSize="20dp"
@@ -50,8 +50,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="228dp"
         android:layout_centerHorizontal="true"
-        android:outlineSpotShadowColor="@color/colorPrimary"
-        android:outlineAmbientShadowColor="@color/colorPrimary"
         android:background="@drawable/round_button_pro"
         android:elevation="10dp"
         >

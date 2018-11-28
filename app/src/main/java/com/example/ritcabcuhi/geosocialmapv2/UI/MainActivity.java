@@ -1,7 +1,8 @@
-package com.example.ritcabcuhi.geosocialmapv2;
+package com.example.ritcabcuhi.geosocialmapv2.UI;
 
-import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -13,18 +14,23 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.support.v7.app.ActionBar;
+import android.view.View;
+import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.example.ritcabcuhi.geosocialmapv2.Manager.CurrentUser;
+import com.example.ritcabcuhi.geosocialmapv2.Model.User;
+import com.example.ritcabcuhi.geosocialmapv2.R;
+import com.google.firebase.auth.FirebaseAuth;
 
-import com.google.firebase.auth.FirebaseAuthException;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class fragment extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private Fragment selectedFragment;
     private Fragment homeFragment;
@@ -34,42 +40,72 @@ public class fragment extends AppCompatActivity implements NavigationView.OnNavi
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    BottomNavigationView bottomNav;
+    Toolbar toolbar;
+
+    CircleImageView userProfileImage;
+    TextView textUserName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
-//        navigationView.setNavigationItemSelectedListener(this);
-//
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        navigationView = findViewById(R.id.nav_view);
+        bottomNav =  findViewById(R.id.bottom_navigation);
+        toolbar = findViewById(R.id.toolbar);
+
+        if(CurrentUser.getInstace().getUser() == null)
+            CurrentUser.getInstace().updateCurrentUser(FirebaseAuth.getInstance().getUid(), new CurrentUser.OnCompleteListener() {
+                @Override
+                public void onComplete(User user) {
+                    setupUI();
+                }
+            });
+        else
+            setupUI();
+
+        setupBottomNavigation();
+        setupNavigationView();
+        setupToolbar();
+
+    }
+
+    private void setupToolbar(){
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+    }
 
+    private void setupNavigationView(){
+        navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
 
+        userProfileImage = headerView.findViewById(R.id.userProfileImage);
+        textUserName = headerView.findViewById(R.id.userName);
+    }
+
+    private void setupBottomNavigation(){
         try{
-            BottomNavigationView bottomNav = (BottomNavigationView) findViewById(R.id.bottom_navigation);
             bottomNav.setOnNavigationItemSelectedListener(navListener);
             bottomNav.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
                 @Override
                 public void onNavigationItemReselected(@NonNull MenuItem item) { }
             });
-            drawerLayout = (DrawerLayout)findViewById(R.id.drawer_nav);
-            navigationView = (NavigationView)findViewById(R.id.nav_view) ;
+            drawerLayout = findViewById(R.id.drawer_nav);
+            navigationView = findViewById(R.id.nav_view) ;
 
             homeFragment = new HomeFragment();
             profileFragment = new ProfileFragment();
-
 
             selectedFragment = homeFragment;
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     selectedFragment).commit();
 
-
         }catch(Exception e){
             Log.e(TAG, "onCreate: ",e );
         }
-
     }
 
     @Override
@@ -120,6 +156,8 @@ public class fragment extends AppCompatActivity implements NavigationView.OnNavi
 
                 case R.id.menu_logout:
                     Log.d(TAG, "onNavigationItemSelected: " + item.getTitle());
+                    FirebaseAuth.getInstance().signOut();
+                    finish();
                     break;
             }
             drawerLayout.closeDrawers();
@@ -128,6 +166,14 @@ public class fragment extends AppCompatActivity implements NavigationView.OnNavi
         }
 
         return false;
+    }
+
+    public void setupUI(){
+        User currentUser = CurrentUser.getInstace().getUser();
+
+        textUserName.setText(currentUser.getName());
+        if(currentUser.getImageUrl()!=null)
+            Glide.with(this).load(currentUser.getImageUrl()).into(userProfileImage);
     }
 
 }

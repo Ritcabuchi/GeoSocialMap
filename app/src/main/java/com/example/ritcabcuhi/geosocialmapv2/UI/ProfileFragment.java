@@ -1,4 +1,4 @@
-package com.example.ritcabcuhi.geosocialmapv2;
+package com.example.ritcabcuhi.geosocialmapv2.UI;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.ritcabcuhi.geosocialmapv2.R;
 
 public class ProfileFragment extends Fragment {
     @Nullable

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bgv2"
-    tools:context=".SignUp">
+    tools:context=".UI.SignUpActivity">
 
 
     <LinearLayout
@@ -19,18 +19,16 @@
 
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/edtPhone"
-            android:hint="Phone Number"
+            android:id="@+id/edtEmail"
+            android:hint="Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/colorBlack"
-            android:text="0925105863"
             android:textColor="@color/colorBlack"
             android:textSize="34sp"
-            android:inputType="phone"
+            android:inputType="textEmailAddress"
             app:met_baseColor="@color/colorBlack"
             app:met_floatingLabel="highlight"
-            app:met_maxCharacters="11"
             app:met_primaryColor="@color/colorBlack"
             app:met_singleLineEllipsis="true"
             />
@@ -41,13 +39,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/colorBlack"
-            android:text="ridwan"
             android:textColor="@color/colorBlack"
             android:textSize="34sp"
             android:inputType="text"
             app:met_baseColor="@color/colorBlack"
             app:met_floatingLabel="highlight"
-            app:met_maxCharacters="11"
             app:met_primaryColor="@color/colorBlack"
             app:met_singleLineEllipsis="true"
             />
@@ -58,13 +54,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/colorBlack"
-            android:text="1234"
             android:textColor="@color/colorBlack"
             android:textSize="34sp"
             android:inputType="textPassword"
             app:met_baseColor="@color/colorBlack"
             app:met_floatingLabel="highlight"
-            app:met_maxCharacters="11"
             app:met_primaryColor="@color/colorBlack"
             app:met_singleLineEllipsis="true"
             />
