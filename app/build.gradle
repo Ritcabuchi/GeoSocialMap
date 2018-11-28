@@ -34,7 +34,9 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-core:16.0.5'
     implementation 'com.google.firebase:firebase-database:16.0.5'
+    implementation 'com.google.firebase:firebase-storage:16.0.5'
     implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.firebaseui:firebase-ui-storage:4.1.0'
 
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'

@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Fragment profileFragment;
 
     private static final String TAG = "Fragment";
+    private static final String HOME_FRAGMENT = "home_fragment";
+    private static final String PROFILE_FRAGMENT = "profile_fragment";
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -55,10 +57,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bottomNav =  findViewById(R.id.bottom_navigation);
         toolbar = findViewById(R.id.toolbar);
 
+//        if(savedInstanceState != null){
+//            homeFragment = getSupportFragmentManager().getFragment(savedInstanceState,HOME_FRAGMENT);
+//            profileFragment = getSupportFragmentManager().getFragment(savedInstanceState,PROFILE_FRAGMENT);
+//        } else {
+            homeFragment = new HomeFragment();
+            profileFragment = new ProfileFragment();
+//        }
+
         setupBottomNavigation();
         setupNavigationView();
         setupToolbar();
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        //Save the fragment's instance
+//        getSupportFragmentManager().putFragment(outState, HOME_FRAGMENT, homeFragment);
+//        getSupportFragmentManager().putFragment(outState,PROFILE_FRAGMENT,profileFragment);
     }
 
     private void setupToolbar(){
@@ -87,9 +106,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             });
             drawerLayout = findViewById(R.id.drawer_nav);
             navigationView = findViewById(R.id.nav_view) ;
-
-            homeFragment = new HomeFragment();
-            profileFragment = new ProfileFragment();
 
             selectedFragment = homeFragment;
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

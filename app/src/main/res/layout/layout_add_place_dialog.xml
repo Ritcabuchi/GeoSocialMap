@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="#fff"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/dialogTitleContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textDialogTitle"
+            android:text="เพิ่มข้อมูลสถานที่"
+            android:fontFamily="@font/athiti"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/dialogContentContainer"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/inputAddress"
+            android:hint="บ้านเลขที่"
+            android:fontFamily="@font/athiti"
+            android:textSize="16sp"
+            android:textColor="#3333ff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/imageSelected"
+            android:background="#cecece"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+        <TextView
+            android:id="@+id/inputPlaceImage"
+            android:text="เลือกรูปภาพ"
+            android:fontFamily="@font/athiti"
+            android:textSize="16sp"
+            android:textColor="#3333ff"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -84,6 +84,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             final FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
                             final DatabaseReference tableUser = mDb.getReference("User");
+
                             tableUser.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
