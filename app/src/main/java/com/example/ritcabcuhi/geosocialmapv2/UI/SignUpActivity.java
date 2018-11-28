@@ -51,13 +51,28 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        final ProgressDialog mDialog = new ProgressDialog(SignUpActivity.this);
-        mDialog.setMessage("Please waiting...");
-        mDialog.show();
-
         final String email = edtEmail.getText().toString();
         final String name = edtName.getText().toString();
         final String password = edtPassword.getText().toString();
+
+        if(email.isEmpty()){
+            Toast.makeText(this, "กรุณากรอกอีเมลล์", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(name.isEmpty()){
+            Toast.makeText(this, "กรุณากรอกชื่อ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(password.isEmpty()){
+            Toast.makeText(this, "กรุณากรอกรหัสผ่าน", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        final ProgressDialog mDialog = new ProgressDialog(SignUpActivity.this);
+        mDialog.setMessage("Please waiting...");
+        mDialog.show();
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

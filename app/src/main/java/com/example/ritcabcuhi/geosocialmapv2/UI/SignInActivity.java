@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ritcabcuhi.geosocialmapv2.EventBus.MainEvent;
 import com.example.ritcabcuhi.geosocialmapv2.Manager.CurrentUser;
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,12 +21,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
     EditText edtEmail,edtPassword;
     TextView signIn_text;
     Button btnSignIn;
 
     private FirebaseAuth mAuth;
+    private ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +58,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        final ProgressDialog mDialog = new ProgressDialog(SignInActivity.this);
+        mDialog = new ProgressDialog(SignInActivity.this);
         mDialog.setMessage("Please waiting...");
         mDialog.show();
 
@@ -61,14 +68,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                mDialog.dismiss();
                 if(task.isSuccessful()){
                     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                     CurrentUser.getInstace().updateCurrentUser(firebaseUser.getUid());
-
-                    Intent home = new Intent(SignInActivity.this, MainActivity.class);
-                    startActivity(home);
-                    finish();
                 }else{
                     String message = task.getException().getLocalizedMessage();
 
@@ -80,5 +82,25 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onUpdateCurrentUser(MainEvent mainEvent){
+        mDialog.dismiss();
+        Intent intent = new Intent(SignInActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

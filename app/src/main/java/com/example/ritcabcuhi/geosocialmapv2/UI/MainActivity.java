@@ -1,5 +1,6 @@
 package com.example.ritcabcuhi.geosocialmapv2.UI;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,10 +23,13 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.example.ritcabcuhi.geosocialmapv2.EventBus.StartMainActivityEvent;
 import com.example.ritcabcuhi.geosocialmapv2.Manager.CurrentUser;
 import com.example.ritcabcuhi.geosocialmapv2.Model.User;
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.firebase.auth.FirebaseAuth;
+
+import org.greenrobot.eventbus.EventBus;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -51,19 +55,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
 
+        EventBus.getDefault().post(new StartMainActivityEvent());
+
         navigationView = findViewById(R.id.nav_view);
         bottomNav =  findViewById(R.id.bottom_navigation);
         toolbar = findViewById(R.id.toolbar);
-
-        if(CurrentUser.getInstace().getUser() == null)
-            CurrentUser.getInstace().updateCurrentUser(FirebaseAuth.getInstance().getUid(), new CurrentUser.OnCompleteListener() {
-                @Override
-                public void onComplete(User user) {
-                    setupUI();
-                }
-            });
-        else
-            setupUI();
 
         setupBottomNavigation();
         setupNavigationView();
@@ -84,6 +80,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         userProfileImage = headerView.findViewById(R.id.userProfileImage);
         textUserName = headerView.findViewById(R.id.userName);
+
+        setupUI();
     }
 
     private void setupBottomNavigation(){
@@ -157,6 +155,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 case R.id.menu_logout:
                     Log.d(TAG, "onNavigationItemSelected: " + item.getTitle());
                     FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(this,MenuActivity.class);
+                    startActivity(intent);
                     finish();
                     break;
             }
@@ -175,5 +175,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(currentUser.getImageUrl()!=null)
             Glide.with(this).load(currentUser.getImageUrl()).into(userProfileImage);
     }
+
 
 }
