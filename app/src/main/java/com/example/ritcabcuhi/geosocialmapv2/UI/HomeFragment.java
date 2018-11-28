@@ -1,9 +1,11 @@
 package com.example.ritcabcuhi.geosocialmapv2.UI;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -87,5 +89,27 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
     @Override
     public void onMapLongClick(LatLng latLng) {
         mMap.addMarker(new MarkerOptions().position(latLng));
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("ยืนยันเพิ่มตำแหน่ง?");
+        builder.setCancelable(false);
+
+
+        builder.setPositiveButton("ไม่", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setNegativeButton("ยืนยัน", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+            }
+        });
+        builder.show();
+
     }
 }

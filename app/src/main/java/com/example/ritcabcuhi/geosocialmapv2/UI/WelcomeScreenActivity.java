@@ -12,7 +12,7 @@ import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
-    private static int SPLASH_TIME_OUT = 500;
+    private static int SPLASH_TIME_OUT = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

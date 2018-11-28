@@ -23,22 +23,23 @@
             android:layout_height="250dp"
             android:layout_gravity="center"
             android:src="@drawable/currect"/>
+
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:id="@+id/edtEmail"
-            android:hint="Email:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/colorBlack"
-            android:textColor="@color/colorBlack"
-            android:textSize="34sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/athiti"
+            android:hint="อีเมลล์:"
             android:inputType="textEmailAddress"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorBlack"
+            android:textSize="34sp"
             app:met_baseColor="@color/colorBlack"
             app:met_floatingLabel="normal"
             app:met_primaryColor="@color/colorBlack"
-            app:met_singleLineEllipsis="true"
-            />
+            app:met_singleLineEllipsis="true" />
 
         <!--<com.rengwuxian.materialedittext.MaterialEditText-->
             <!--android:layout_marginRight="10dp"-->
@@ -60,22 +61,21 @@
             <!--/>-->
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:id="@+id/edtPassword"
-            android:hint="Password:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/colorBlack"
-            android:textColor="@color/colorBlack"
-            android:textSize="34sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/athiti"
+            android:hint="รหัสผ่าน:"
             android:inputType="textPassword"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorBlack"
+            android:textSize="34sp"
             app:met_baseColor="@color/colorBlack"
             app:met_floatingLabel="normal"
-            app:met_maxCharacters="11"
             app:met_primaryColor="@color/colorBlack"
-            app:met_singleLineEllipsis="true"
-            />
+            app:met_singleLineEllipsis="true" />
 
         <Button
             android:id="@+id/btnSignIn"
