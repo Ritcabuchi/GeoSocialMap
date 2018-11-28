@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ea4949</color>
+    <color name="colorPrimaryDark">#f73232</color>
+    <color name="btn_login">#f52222</color>
+    <color name="colorAccent">#ea4949</color>
+    <color name="colorWelcome">#b01515</color>
+    <color name="colorWhite">#FFFF</color>
+    <color name="colorBlack">#080202</color>
+    <color name="btnSignUp">#082c60</color>
+    <color name="btnSignIn">#0a81e9</color>
+    <color name="start">#0a81e9</color>
+    <color name="end">#082c60</color>
+    <color name="solidborder">#c6c3c0</color>
+    <color name="gray">#aeacaa</color>
+    <color name="yellow">#f4b404</color>
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LayoutAuten"
+    >
+
+
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/auten"
+            android:layout_gravity="center"
+            />
+
+        <Button
+            android:id="@+id/btn_system"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/round_button"
+            android:fontFamily="@font/athiti"
+            android:shadowColor="@color/colorBlack"
+            android:text="เข้าสู่ระบบ"
+            android:textColor="@color/colorWhite"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/btn_signin"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/round_buttonyellow"
+            android:fontFamily="@font/athiti"
+            android:shadowColor="@color/colorBlack"
+            android:text="ลงทะเบียน"
+            android:textColor="@color/colorWhite"
+            android:textSize="30dp" />
+
+    </LinearLayout>
+
+    <!--app:buttonColor="@color/btnSignIn"-->
+    <!--app:cornerRadius="4dp"-->
+    <!--app:shadowColor="@color/colorBlack"-->
+    <!--app:shadowEnabled="true"-->
+    <!--app:shadowHeight="5dp"/>-->
+
+</RelativeLayout>

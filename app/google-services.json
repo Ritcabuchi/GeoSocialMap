@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "905595500283",
+    "firebase_url": "https://geosocialmap.firebaseio.com",
+    "project_id": "geosocialmap",
+    "storage_bucket": "geosocialmap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905595500283:android:23850b5a25786b5e",
+        "android_client_info": {
+          "package_name": "com.example.ritcabcuhi.geosocialmapv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905595500283-qq80g23uj56mg07k7dtfeek6id0onthg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ritcabcuhi.geosocialmapv2",
+            "certificate_hash": "1920f34c7f5d7889b8eea886bee0988a1aa7a908"
+          }
+        },
+        {
+          "client_id": "905595500283-tcbs7v9dek4ma8kpk6geqp20k9dk2igo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDb3IRtWfYJ7cylGUSZg5mePY59ZZlDbM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905595500283-tcbs7v9dek4ma8kpk6geqp20k9dk2igo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
