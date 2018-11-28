@@ -1,4 +1,4 @@
-package com.example.ritcabcuhi.geosocialmapv2.UI;
+package com.example.ritcabcuhi.geosocialmapv2.ui;
 
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.ritcabcuhi.geosocialmapv2.Model.User;
+import com.example.ritcabcuhi.geosocialmapv2.model.User;
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -51,13 +51,28 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        final ProgressDialog mDialog = new ProgressDialog(SignUpActivity.this);
-        mDialog.setMessage("Please waiting...");
-        mDialog.show();
-
         final String email = edtEmail.getText().toString();
         final String name = edtName.getText().toString();
         final String password = edtPassword.getText().toString();
+
+        if(email.isEmpty()){
+            Toast.makeText(this, "กรุณากรอกอีเมลล์", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(name.isEmpty()){
+            Toast.makeText(this, "กรุณากรอกชื่อ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(password.isEmpty()){
+            Toast.makeText(this, "กรุณากรอกรหัสผ่าน", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        final ProgressDialog mDialog = new ProgressDialog(SignUpActivity.this);
+        mDialog.setMessage("Please waiting...");
+        mDialog.show();
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

@@ -1,15 +1,17 @@
-package com.example.ritcabcuhi.geosocialmapv2.Manager;
+package com.example.ritcabcuhi.geosocialmapv2.manager;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.ritcabcuhi.geosocialmapv2.Model.User;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.ritcabcuhi.geosocialmapv2.eventbus.MainEvent;
+import com.example.ritcabcuhi.geosocialmapv2.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class CurrentUser {
     private static final String TAG = "CurrentUser";
@@ -31,28 +33,8 @@ public class CurrentUser {
         return user;
     }
 
+
     public void updateCurrentUser(String uid){
-        try{
-            final FirebaseDatabase db = FirebaseDatabase.getInstance();
-            final DatabaseReference tableUser = db.getReference("User");
-
-            tableUser.child(uid).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    user = dataSnapshot.getValue(User.class);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Log.e(TAG, "onCancelled: ",databaseError.toException());
-                }
-            });
-        }catch (NullPointerException ne){
-            Log.e(TAG, "updateCurrentUser: ", ne);
-        }
-    }
-
-    public void updateCurrentUser(String uid, final OnCompleteListener listener){
         if(uid!=null) {
             final FirebaseDatabase db = FirebaseDatabase.getInstance();
             final DatabaseReference tableUser = db.getReference("User");
@@ -60,9 +42,10 @@ public class CurrentUser {
             tableUser.child(uid).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Log.d(TAG, "onDataChange: ");
                     user = dataSnapshot.getValue(User.class);
-                    if(listener!=null)
-                        listener.onComplete(user);
+
+                    EventBus.getDefault().post(new MainEvent());
                 }
 
                 @Override

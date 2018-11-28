@@ -1,9 +1,6 @@
-package com.example.ritcabcuhi.geosocialmapv2.UI;
+package com.example.ritcabcuhi.geosocialmapv2.ui;
 
-import android.content.pm.PackageManager;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,9 +8,6 @@ import android.view.MenuItem;
 
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.GoogleApiAvailabilityLight;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
