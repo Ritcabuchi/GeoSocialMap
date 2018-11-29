@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ritcabcuhi.geosocialmapv2.eventbus.MainEvent;
+import com.example.ritcabcuhi.geosocialmapv2.eventbus.DataEditEvent;
 import com.example.ritcabcuhi.geosocialmapv2.manager.CurrentUser;
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -96,7 +96,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onUpdateCurrentUser(MainEvent mainEvent){
+    public void onUpdateCurrentUser(DataEditEvent dataEditEvent){
         mDialog.dismiss();
         Intent intent = new Intent(SignInActivity.this,MainActivity.class);
         startActivity(intent);

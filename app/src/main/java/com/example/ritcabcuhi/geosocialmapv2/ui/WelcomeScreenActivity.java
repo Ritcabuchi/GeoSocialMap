@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.ritcabcuhi.geosocialmapv2.eventbus.MainEvent;
+import com.example.ritcabcuhi.geosocialmapv2.eventbus.DataEditEvent;
 import com.example.ritcabcuhi.geosocialmapv2.manager.CurrentUser;
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -58,7 +58,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onUpdateCurrentUser(MainEvent mainEvent){
+    public void onUpdateCurrentUser(DataEditEvent dataEditEvent){
         Intent intent = new Intent(WelcomeScreenActivity.this,MainActivity.class);
         startActivity(intent);
         finish();

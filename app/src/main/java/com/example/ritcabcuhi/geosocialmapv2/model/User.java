@@ -1,5 +1,7 @@
 package com.example.ritcabcuhi.geosocialmapv2.model;
 
+import android.net.Uri;
+
 public class User {
     private String Password;
 
@@ -11,6 +13,7 @@ public class User {
     private String position;
     private String workingPlace;
     private String imageUrl;
+    private String imageUri;
 
     public User() {
 
@@ -91,5 +94,13 @@ public class User {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
     }
 }

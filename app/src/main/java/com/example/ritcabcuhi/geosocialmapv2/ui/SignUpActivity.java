@@ -9,18 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.ritcabcuhi.geosocialmapv2.model.User;
+import com.example.ritcabcuhi.geosocialmapv2.api.UserApi;
+import com.example.ritcabcuhi.geosocialmapv2.api.ApiListener;
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
@@ -81,32 +79,21 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            final FirebaseUser firebaseUser = mAuth.getCurrentUser();
-
-                            final DatabaseReference tableUser = mDb.getReference("User");
-
-                            tableUser.addValueEventListener(new ValueEventListener() {
+                            UserApi.getInstance().createUser(name,task.getResult().getUser()).setListener(new ApiListener() {
                                 @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                public void onSuccess(DataSnapshot dataSnapshot) {
                                     mDialog.dismiss();
-
-                                    User user = new User();
-                                    user.setId(firebaseUser.getUid());
-                                    user.setEmail(firebaseUser.getEmail());
-                                    user.setName(name);
-
-                                    tableUser.child(firebaseUser.getUid()).setValue(user);
-
                                     FirebaseAuth.getInstance().signOut();
                                     Toast.makeText(SignUpActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
 
                                 @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                public void onFailure(DatabaseError error) {
                                     mDialog.dismiss();
                                 }
                             });
+
 
                         } else {
                             mDialog.dismiss();

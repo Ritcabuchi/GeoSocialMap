@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,14 +17,15 @@
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="30dp"
             >
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageProfile"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="5dp"
-                android:src="@drawable/profile"
+                android:src="@drawable/default_user_image"
                 app:civ_border_width="2dp"
                 app:civ_border_color="#FFFFFFFF"
                 android:padding="3dp"/>
@@ -31,14 +33,14 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/NameProfile"
+            android:id="@+id/textUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/userProfileContainer"
             android:layout_centerHorizontal="true"
-            android:text=""
+            android:text="Test"
             android:textSize="20dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="70dp"
             android:textColor="@color/colorWhite"
             />
 
@@ -46,6 +48,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/contentContainer"
         android:layout_width="340dp"
         android:layout_height="match_parent"
         android:layout_marginTop="228dp"
@@ -53,14 +56,26 @@
         android:background="@drawable/round_button_pro"
         android:elevation="10dp"
         >
-
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            app:fabSize="mini"
+            android:src="@drawable/ic_create_black_24dp"
+            android:layout_alignParentRight="true"
+            app:backgroundTint="@color/colorWhite"
+            android:layout_marginBottom="5dp"
+            />
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,17 +84,17 @@
                 android:text="ตำแหน่ง:"
                 android:textColor="@color/colorBlack"
                 android:textSize="15dp" />
-                <TextView
-                    android:id="@+id/text_position"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:text=""/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/gray"/>
+            <EditText
+                android:id="@+id/edtPosition"
+                android:layout_width="305dp"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text=""/>
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@color/gray"/>-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,17 +103,17 @@
                 android:text="สถานที่ทำงาน:"
                 android:textColor="@color/colorBlack"
                 android:textSize="15dp" />
-            <TextView
-                android:id="@+id/text_workplace"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/edtWorkPlace"
+                android:layout_width="305dp"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:text=""/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/gray"/>
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@color/gray"/>-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -106,18 +121,20 @@
                 android:fontFamily="@font/athiti"
                 android:text="ที่อยู่:"
                 android:textColor="@color/colorBlack"
-                android:textSize="15dp" />
-            <TextView
-                android:id="@+id/text_address"
-                android:layout_width="wrap_content"
+                android:textSize="15dp"
+                />
+            <EditText
+                android:id="@+id/edtAddress"
+                android:layout_width="305dp"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
-                android:text=""/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/gray"/>
+                android:maxLines="80"
+                />
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@color/gray"/>-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -126,17 +143,17 @@
                 android:text="อีเมล์:"
                 android:textColor="@color/colorBlack"
                 android:textSize="15dp" />
-            <TextView
-                android:id="@+id/text_email"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="305dp"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:text=""/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/gray"/>
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@color/gray"/>-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -145,17 +162,13 @@
                 android:text="เบอร์โทร:"
                 android:textColor="@color/colorBlack"
                 android:textSize="15dp" />
-            <TextView
-                android:id="@+id/text_phone"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/edtPhoneNum"
+                android:layout_width="305dp"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:text=""/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/gray"/>
+
 
         </LinearLayout>
 

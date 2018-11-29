@@ -1,11 +1,15 @@
 package com.example.ritcabcuhi.geosocialmapv2.model;
 
+import android.net.Uri;
+
 import com.google.android.gms.maps.model.LatLng;
 
 public class Place {
 
+    private String id;
     private String address;
     private String imageUrl;
+    private String imageUri;
     private Double latitude;
     private Double longitude;
 
@@ -55,4 +59,27 @@ public class Place {
     public LatLng getLatLng(){
         return new LatLng(latitude,longitude);
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
+
+    public String getId(){
+        if(id!=null) return id;
+        if(latitude != null && longitude != null){
+            String s1 = String.valueOf(latitude).replace('.','p');
+            String s2 = String.valueOf(longitude).replace('.','p');
+            id = s1 + "_" + s2;
+        }
+        return id;
+    }
+
 }

@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.ritcabcuhi.geosocialmapv2.eventbus.DataEditEvent;
 import com.example.ritcabcuhi.geosocialmapv2.eventbus.StartMainActivityEvent;
 import com.example.ritcabcuhi.geosocialmapv2.manager.CurrentUser;
 import com.example.ritcabcuhi.geosocialmapv2.model.User;
@@ -24,6 +25,7 @@ import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -178,12 +180,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onUserUpdate(DataEditEvent e){
+        setupUI();
+    }
+
     public void setupUI(){
         User currentUser = CurrentUser.getInstace().getUser();
 
         textUserName.setText(currentUser.getName());
-        if(currentUser.getImageUrl()!=null)
-            Glide.with(this).load(currentUser.getImageUrl()).into(userProfileImage);
+        if(currentUser.getImageUri()!=null)
+            Glide.with(this).load(currentUser.getImageUri()).into(userProfileImage);
     }
 
 
