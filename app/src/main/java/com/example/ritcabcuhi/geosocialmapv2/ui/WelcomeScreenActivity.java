@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.ritcabcuhi.geosocialmapv2.api.GoogleDirectionApi;
+import com.example.ritcabcuhi.geosocialmapv2.api.GooglePlaceApi;
 import com.example.ritcabcuhi.geosocialmapv2.eventbus.DataEditEvent;
 import com.example.ritcabcuhi.geosocialmapv2.manager.CurrentUser;
 import com.example.ritcabcuhi.geosocialmapv2.R;
@@ -25,6 +27,10 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        GoogleDirectionApi.getInstance().setApiKey(getString(R.string.google_maps_key));
+        GooglePlaceApi.getInstace().setApiKey(getString(R.string.google_maps_key));
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
             Window w = getWindow();
             w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);

@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <group android:checkableBehavior="single">
-
-
-
-        <item android:id="@+id/menu_card_view"
+        <item android:id="@+id/menu_my_places"
+            android:title="สถานที่ของฉัน"
+            android:icon="@drawable/ic_location_on_black_24dp" />
+        <item android:id="@+id/menu_health"
             android:title="สถานที่บริการสุขภาพ"
             android:icon="@drawable/ic_local_hospital_black_24dp"
             />
-        <item android:id="@+id/menu_recycler_view"
+        <item android:id="@+id/menu_education"
             android:title="สถานศึกษา"
             android:icon="@drawable/icon_school" />
-        <item android:id="@+id/menu_view_pager"
-            android:title="ห้างสรรพสินค้า"
-            android:icon="@drawable/store_shop" />
-
         <item android:id="@+id/menu_logout"
             android:title="ออกจากระบบ"
             android:icon="@drawable/ic_power_settings_new_black_24dp"/>

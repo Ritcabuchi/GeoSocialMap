@@ -67,5 +67,40 @@
     <!--android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
     <!--/>-->
 
+    <LinearLayout
+        android:id="@+id/travelInfoContainer"
+        android:background="@drawable/bg_round_white"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:elevation="3dp"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textDistance"
+            android:text="ระยะทาง : 10 กม"
+            android:textStyle="bold"
+            android:fontFamily="@font/athiti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textDuration"
+            android:text="ระยะเวลา : 1 ชั่วโมง 30 นาที"
+            android:textStyle="bold"
+            android:fontFamily="@font/athiti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
 
 </RelativeLayout>

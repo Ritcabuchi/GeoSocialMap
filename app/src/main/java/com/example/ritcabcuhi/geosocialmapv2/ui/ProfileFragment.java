@@ -28,7 +28,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.example.ritcabcuhi.geosocialmapv2.api.UserApi;
-import com.example.ritcabcuhi.geosocialmapv2.api.ApiListener;
+import com.example.ritcabcuhi.geosocialmapv2.api.listener.ApiListener;
 import com.example.ritcabcuhi.geosocialmapv2.eventbus.DataEditEvent;
 import com.example.ritcabcuhi.geosocialmapv2.manager.CurrentUser;
 import com.example.ritcabcuhi.geosocialmapv2.model.User;

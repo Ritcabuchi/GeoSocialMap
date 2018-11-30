@@ -33,6 +33,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/inputName"
+            android:hint="ชื่อสถานที่"
+            android:fontFamily="@font/athiti"
+            android:textSize="16sp"
+            android:textColor="#3333ff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/inputAddress"
             android:hint="บ้านเลขที่"
             android:fontFamily="@font/athiti"

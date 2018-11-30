@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.ritcabcuhi.geosocialmapv2.api.UserApi;
-import com.example.ritcabcuhi.geosocialmapv2.api.ApiListener;
+import com.example.ritcabcuhi.geosocialmapv2.api.listener.ApiListener;
 import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

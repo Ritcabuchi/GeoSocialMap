@@ -2,6 +2,7 @@ package com.example.ritcabcuhi.geosocialmapv2.api;
 
 import android.support.annotation.NonNull;
 
+import com.example.ritcabcuhi.geosocialmapv2.api.listener.ApiListener;
 import com.example.ritcabcuhi.geosocialmapv2.model.User;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

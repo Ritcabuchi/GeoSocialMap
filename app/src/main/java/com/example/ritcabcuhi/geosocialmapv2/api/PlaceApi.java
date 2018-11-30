@@ -2,23 +2,16 @@ package com.example.ritcabcuhi.geosocialmapv2.api;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
+import com.example.ritcabcuhi.geosocialmapv2.api.listener.ApiListener;
 import com.example.ritcabcuhi.geosocialmapv2.model.Place;
-import com.example.ritcabcuhi.geosocialmapv2.model.User;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class PlaceApi {
 

@@ -7,9 +7,11 @@ import com.google.android.gms.maps.model.LatLng;
 public class Place {
 
     private String id;
+    private String name;
     private String address;
     private String imageUrl;
     private String imageUri;
+    private String photoReference;
     private Double latitude;
     private Double longitude;
 
@@ -17,7 +19,8 @@ public class Place {
 
     }
 
-    public Place(String address, String imageUrl, Double latitude, Double longitude) {
+    public Place(String name,String address, String imageUrl, Double latitude, Double longitude) {
+        this.name = name;
         this.address = address;
         this.imageUrl = imageUrl;
         this.latitude = latitude;
@@ -70,6 +73,22 @@ public class Place {
 
     public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhotoReference() {
+        return photoReference;
+    }
+
+    public void setPhotoReference(String photoReference) {
+        this.photoReference = photoReference;
     }
 
     public String getId(){

@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.ritcabcuhi.geosocialmapv2.eventbus.ChangePlacesTypeEvent;
 import com.example.ritcabcuhi.geosocialmapv2.eventbus.DataEditEvent;
 import com.example.ritcabcuhi.geosocialmapv2.eventbus.StartMainActivityEvent;
 import com.example.ritcabcuhi.geosocialmapv2.manager.CurrentUser;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            homeFragment = getSupportFragmentManager().getFragment(savedInstanceState,HOME_FRAGMENT);
 //            profileFragment = getSupportFragmentManager().getFragment(savedInstanceState,PROFILE_FRAGMENT);
 //        } else {
-            homeFragment = new HomeFragment();
+            homeFragment = new MapFragment();
             profileFragment = new ProfileFragment();
 //        }
 
@@ -71,15 +72,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupNavigationView();
         setupToolbar();
 
+
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-        //Save the fragment's instance
-//        getSupportFragmentManager().putFragment(outState, HOME_FRAGMENT, homeFragment);
-//        getSupportFragmentManager().putFragment(outState,PROFILE_FRAGMENT,profileFragment);
     }
 
     private void setupToolbar(){
@@ -135,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     switch (item.getItemId()){
 
                         case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
+                            selectedFragment = new MapFragment();
                             break;
                         case R.id.nav_profile:
                             selectedFragment = new ProfileFragment();
@@ -154,14 +152,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         try{
             item.setChecked(true);
             switch (item.getItemId()){
-                case R.id.menu_card_view:
+                case R.id.menu_health:
                     Log.d(TAG, "onNavigationItemSelected: " + item.getTitle());
+                    EventBus.getDefault().post(new ChangePlacesTypeEvent(ChangePlacesTypeEvent.PLACES_TYPE.HEALTH));
                     break;
-                case R.id.menu_recycler_view:
+                case R.id.menu_education:
                     Log.d(TAG, "onNavigationItemSelected: " + item.getTitle());
+                    EventBus.getDefault().post(new ChangePlacesTypeEvent(ChangePlacesTypeEvent.PLACES_TYPE.EDUCATION));
                     break;
-                case R.id.menu_view_pager:
+                case R.id.menu_my_places:
                     Log.d(TAG, "onNavigationItemSelected: " + item.getTitle());
+                    EventBus.getDefault().post(new ChangePlacesTypeEvent(ChangePlacesTypeEvent.PLACES_TYPE.MY_PLACES));
                     break;
 
                 case R.id.menu_logout:

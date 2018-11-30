@@ -52,7 +52,7 @@ public class MenuActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe
     public void onMainStart(StartMainActivityEvent event){
         finish();
     }
