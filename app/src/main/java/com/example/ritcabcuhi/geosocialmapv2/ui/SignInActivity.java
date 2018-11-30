@@ -95,7 +95,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         EventBus.getDefault().unregister(this);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe
     public void onUpdateCurrentUser(DataEditEvent dataEditEvent){
         mDialog.dismiss();
         Intent intent = new Intent(SignInActivity.this,MainActivity.class);

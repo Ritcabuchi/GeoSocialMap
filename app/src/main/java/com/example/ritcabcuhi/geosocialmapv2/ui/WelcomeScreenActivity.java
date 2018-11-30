@@ -1,18 +1,19 @@
 package com.example.ritcabcuhi.geosocialmapv2.ui;
 
+
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.example.ritcabcuhi.geosocialmapv2.api.GoogleDirectionApi;
 import com.example.ritcabcuhi.geosocialmapv2.api.GooglePlaceApi;
 import com.example.ritcabcuhi.geosocialmapv2.eventbus.DataEditEvent;
 import com.example.ritcabcuhi.geosocialmapv2.manager.CurrentUser;
-import com.example.ritcabcuhi.geosocialmapv2.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.greenrobot.eventbus.EventBus;
@@ -63,7 +64,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe
     public void onUpdateCurrentUser(DataEditEvent dataEditEvent){
         Intent intent = new Intent(WelcomeScreenActivity.this,MainActivity.class);
         startActivity(intent);
