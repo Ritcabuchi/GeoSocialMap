@@ -252,7 +252,7 @@ public class ProfileFragment extends Fragment {
     }
 
     @Subscribe
-    void onEditData(DataEditEvent e){
+    public void onEditData(DataEditEvent e){
         updateView();
     }
 

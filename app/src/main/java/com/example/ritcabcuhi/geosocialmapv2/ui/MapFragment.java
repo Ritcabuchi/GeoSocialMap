@@ -343,7 +343,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         mMap.setOnMapLongClickListener(this);
 
-        getLocationPermission();
+        if(!mLocationPermissionGranted)
+            getLocationPermission();
+
         getDeviceLocation();
 
         updateLocationUI();
@@ -370,6 +372,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             }
         });
 
+        mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 
             @Override
@@ -492,6 +495,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     mLocationPermissionGranted = true;
+                    onMapReady(mMap);
                 }
             }
         }

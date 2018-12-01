@@ -62,13 +62,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bottomNav =  findViewById(R.id.bottom_navigation);
         toolbar = findViewById(R.id.toolbar);
 
-//        if(savedInstanceState != null){
-//            homeFragment = getSupportFragmentManager().getFragment(savedInstanceState,HOME_FRAGMENT);
-//            profileFragment = getSupportFragmentManager().getFragment(savedInstanceState,PROFILE_FRAGMENT);
-//        } else {
-            homeFragment = new MapFragment();
-            profileFragment = new ProfileFragment();
-//        }
+        homeFragment = new MapFragment();
+        profileFragment = new ProfileFragment();
 
         setupBottomNavigation();
         setupNavigationView();
@@ -142,8 +137,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             break;
                         case R.id.nav_profile:
                             selectedFragment = new ProfileFragment();
-//                                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-//                                  getSupportActionBar().hide();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
