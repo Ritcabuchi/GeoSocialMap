@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final String HOME_FRAGMENT = "home_fragment";
     private static final String PROFILE_FRAGMENT = "profile_fragment";
 
+    private int prevNavItem;
+
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     BottomNavigationView bottomNav;
@@ -89,6 +91,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void setupNavigationView(){
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.menu_my_places);
+        prevNavItem = R.id.menu_my_places;
+
         View headerView = navigationView.getHeaderView(0);
 
         userProfileImage = headerView.findViewById(R.id.userProfileImage);
@@ -149,6 +154,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == prevNavItem)
+            return false;
+        prevNavItem = item.getItemId();
         try{
             item.setChecked(true);
             switch (item.getItemId()){

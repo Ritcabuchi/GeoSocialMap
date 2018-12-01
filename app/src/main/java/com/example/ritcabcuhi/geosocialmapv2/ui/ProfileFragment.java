@@ -213,7 +213,7 @@ public class ProfileFragment extends Fragment {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
 
-        View view = inflater.inflate(R.layout.layout_did_not_save_dialog, null);
+        View view = inflater.inflate(R.layout.layout_alert_dialog, null);
         dialog.setView(view);
 
         dialog.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {

@@ -33,6 +33,14 @@ public class PlaceApi {
         return placeApi;
     }
 
+    public PlaceApi removePlace(Place place){
+        final DatabaseReference tablePlace = FirebaseDatabase.getInstance().getReference().child("Place");
+
+        tablePlace.child(place.getId()).removeValue();
+
+        return placeApi;
+    }
+
     private void retrieveImageUri(final Place place){
         if(place.getImageUri() == null){
             FirebaseStorage.getInstance().getReference(place.getImageUrl()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

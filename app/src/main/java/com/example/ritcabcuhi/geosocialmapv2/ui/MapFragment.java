@@ -108,6 +108,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
     private LatLng selectedLatLng;
     private Marker selectedMarker;
+    private String selectedPlaceId;
     private List<MarkerOptions> markers;
 
     private static final String KEY_CAMERA_POSITION = "camera_position";
@@ -326,6 +327,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         return new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude());
     }
 
+    private String getPlaceId(LatLng latLng){
+        String id = "";
+        if(latLng != null){
+            String s1 = String.valueOf(latLng.latitude).replace('.','p');
+            String s2 = String.valueOf(latLng.longitude).replace('.','p');
+            id = s1 + "_" + s2;
+        }
+        return id;
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -348,6 +359,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             @Override
             public boolean onMarkerClick(final Marker marker) {
                 selectedLatLng = marker.getPosition();
+                selectedPlaceId = getPlaceId(selectedLatLng);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -373,6 +385,53 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 TextView textPlaceName = infoWindow.findViewById(R.id.textPlaceName);
                 TextView textPlaceAddress = infoWindow.findViewById(R.id.textPlaceAddress);
                 ImageView infoWindowIv = infoWindow.findViewById(R.id.imageInfoWindow);
+                ImageView btnRemove = infoWindow.findViewById(R.id.btnRemove);
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                LayoutInflater inflater = getLayoutInflater();
+                View v = inflater.inflate(R.layout.layout_alert_dialog,null);
+
+                TextView tvTitle = v.findViewById(R.id.textDialogTitle);
+                TextView tvQuestion = v.findViewById(R.id.textDialogQuestion);
+
+                tvTitle.setText("ลบสถานที่");
+                tvQuestion.setText("คุณต้องการลบสถานที่นี้หรือไม่ ?");
+
+                builder.setView(v);
+
+                if(currentPlacesType != ChangePlacesTypeEvent.PLACES_TYPE.MY_PLACES){
+                    btnRemove.setVisibility(View.GONE);
+                    mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                        @Override
+                        public void onInfoWindowClick(Marker marker) {
+
+                        }
+                    });
+                }
+                else{
+                    btnRemove.setVisibility(View.VISIBLE);
+                    mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                        @Override
+                        public void onInfoWindowClick(final Marker marker) {
+                            builder.setPositiveButton("ยืนยัน", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    PlaceApi.getInstance().removePlace(myPlaceList.get(getPlaceId(marker.getPosition())));
+                                }
+                            });
+
+                            builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            });
+
+                            builder.show();
+                        }
+                    });
+                }
+
 
                 try{
                     Place place = currentPlaceList.get(marker.getSnippet());
@@ -389,8 +448,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             }
         });
 
-        if(restored)
-            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(mCameraPosition));
+        EventBus.getDefault().post(new ChangePlacesTypeEvent(ChangePlacesTypeEvent.PLACES_TYPE.MY_PLACES));
     }
 
     private void getDeviceLocation() {
@@ -405,7 +463,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                             mLastKnownLocation = task.getResult();
                             LatLng latLng = new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude());
                             if(!restored)
-                                showCurrentLocation();
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,DEFAULT_ZOOM));
                         } else {
                             Log.d(TAG, "Current location is null. Using defaults.");
                             Log.e(TAG, "Exception: %s", task.getException());
@@ -683,10 +741,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                             healthPlaceList = placeList;
                             currentPlaceList = healthPlaceList;
                             markAllPoints();
-                            Toast.makeText(getContext(), "แสดงพิกัดสถานสุขภาพ", Toast.LENGTH_SHORT).show();
+                            if(placeList.size() > 0)
+                                Toast.makeText(getContext(), "แสดงพิกัดสถานสุขภาพ", Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(getContext(), "ไม่พบสถานสุขภาพ", Toast.LENGTH_SHORT).show();
                         }catch(Exception e){
                             Log.e(TAG, "onSuccess: ",e );
-                            Toast.makeText(getContext(), "ไม่พบสถานสุขภาพ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "เกิดข้อผิดพลาด", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -708,10 +769,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                             educationPlaceList = placeList;
                             currentPlaceList = educationPlaceList;
                             markAllPoints();
-                            Toast.makeText(getContext(), "แสดงพิกัดสถานศึกษา", Toast.LENGTH_SHORT).show();
+                            if(placeList.size() > 0)
+                                Toast.makeText(getContext(), "แสดงพิกัดสถานศึกษา", Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(getContext(), "ไม่พบสถานศึกษา", Toast.LENGTH_SHORT).show();
                         }catch(Exception e){
                             Log.e(TAG, "onSuccess: ",e );
-                            Toast.makeText(getContext(), "ไม่พบสถานศึกษา", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "เกิดข้อผิดพลาด", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
